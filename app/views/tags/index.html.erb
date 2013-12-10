@@ -1,0 +1,35 @@
+<h1>Listing tags</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Post</th>
+    <th>Page</th>
+    <th>Name</th>
+    <th>Date created</th>
+    <th>Date updated</th>
+    <th>Deleted at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tags.each do |tag| %>
+  <tr>
+    <td><%= tag.id %></td>
+    <td><%= tag.post_id %></td>
+    <td><%= tag.page_id %></td>
+    <td><%= tag.name %></td>
+    <td><%= tag.date_created %></td>
+    <td><%= tag.date_updated %></td>
+    <td><%= tag.deleted_at %></td>
+    <td><%= link_to 'Show', tag %></td>
+    <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
+    <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tag', new_tag_path %>

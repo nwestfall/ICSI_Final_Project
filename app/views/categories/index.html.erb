@@ -1,0 +1,35 @@
+<h1>Listing categories</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Post</th>
+    <th>Page</th>
+    <th>Name</th>
+    <th>Date created</th>
+    <th>Date updated</th>
+    <th>Deleted at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= category.id %></td>
+    <td><%= category.post_id %></td>
+    <td><%= category.page_id %></td>
+    <td><%= category.name %></td>
+    <td><%= category.date_created %></td>
+    <td><%= category.date_updated %></td>
+    <td><%= category.deleted_at %></td>
+    <td><%= link_to 'Show', category %></td>
+    <td><%= link_to 'Edit', edit_category_path(category) %></td>
+    <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Category', new_category_path %>

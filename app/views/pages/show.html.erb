@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @page.id %>
+</p>
+
+<p>
+  <b>Heading:</b>
+  <%= @page.heading %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @page.content %>
+</p>
+
+<p>
+  <b>Date created:</b>
+  <%= @page.date_created %>
+</p>
+
+<p>
+  <b>Date updated:</b>
+  <%= @page.date_updated %>
+</p>
+
+<p>
+  <b>Deleted at:</b>
+  <%= @page.deleted_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>

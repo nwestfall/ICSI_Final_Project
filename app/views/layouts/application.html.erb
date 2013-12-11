@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "nathan's site" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -12,8 +12,66 @@
   </head>
 
   <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="/">nathan's site</a></h1>
+        </li>
+      </ul>
 
-    <%= yield %>
+      <section class="top-bar-section">
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li><a href="/about">about</a></li>
+          <li><a href="/posts">posts</a></li>
+          <li><a href="/siteinfo">site info</a></li>
+          <li><a href="/freeforall">free for all</a></li>
+          <li><a href="/contact">contact</a></li>
+        </ul>
+      </section>
+    </nav>
+    <div class="row">
+      <div class="large-8 columns">
+        <% if notice %>
+          <div data-alert style="margin-top: 5px;" class="alert-box success radius">
+            <%= notice %>
+            <a href="#" class="close">&times;</a>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
+      <div class="large-4 columns" style="margin-top: 5px;">
+        <div class="fb-share-button" data-href="http://developers.facebook.com/docs/plugins/" data-type="button_count"></div>
+        <br />
+        <div style="margin-top: 5px;">
+          <a class="twitter-timeline" href="https://twitter.com/timeawastin" data-widget-id="410534530177462272">Tweets by @timeawastin</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+        <div class="panel">
+          <h6 class="subheader">Tags</h6>
+          <p>
+            <% Tag.all.each do |tag| %>
+              <span style="margin: 0;" class="label round"><%= tag.name %> (<%= Tag.where(:name => tag.name).count %>)</span>
+            <% end %>
+          </p>
+          <hr />
+          <h6 class="subheader">Categories</h6>
+          <p>
+            <% Category.all.each do |cat| %>
+              <span class="label round"><%= cat.name %> (<%= Category.where(:name => cat.name).count %>)</span>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

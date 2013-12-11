@@ -12,30 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :id %><br />
-    <%= f.number_field :id %>
-  </div>
-  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :content %><br />
-    <%= f.text_field :content %>
-  </div>
-  <div class="field">
-    <%= f.label :date_created %><br />
-    <%= f.datetime_select :date_created %>
+    <%= f.text_area :content %>
   </div>
   <div class="field">
     <%= f.label :date_updated %><br />
     <%= f.datetime_select :date_updated %>
   </div>
-  <div class="field">
-    <%= f.label :deleted_at %><br />
-    <%= f.datetime_select :deleted_at %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "button small" %>
   </div>
 <% end %>

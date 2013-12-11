@@ -1,33 +1,15 @@
-<h1>Listing posts</h1>
-
-<table>
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Content</th>
-    <th>Date created</th>
-    <th>Date updated</th>
-    <th>Deleted at</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.id %></td>
-    <td><%= post.name %></td>
-    <td><%= post.content %></td>
-    <td><%= post.date_created %></td>
-    <td><%= post.date_updated %></td>
-    <td><%= post.deleted_at %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Post', new_post_path %>
+<div class="row">
+    <div class="large-12 columns">
+        <h2 class="subheader">posts</h2>
+        <% @posts.each do |post| %>
+            <div class="panel">
+                <h4 class="subheader"><%= post.name %></h4>
+                <p><%= post.content.html_safe %></p>
+                <p>date created: <%= post.date_created %> || date updated: <%= post.date_updated %></p>
+                <p><%= link_to 'show', post %></p>
+            </div>
+        <% end %>
+        <br />
+        <p><%= link_to 'new post', new_post_path, :class => "button tiny" %></p>
+    </div>
+</div>

@@ -10,6 +10,13 @@ App::Application.routes.draw do
 
   resources :posts
 
+  #pages
+  match '/about' => "pages#show", :id => 2
+  match '/posts' => "posts#index"
+  match '/siteinfo' => "pages#show", :id => 3
+  match '/freeforall' => "pages#show", :id => 5
+  match '/contact' => "pages#show", :id => 4
+  match '/contactsend' => "mailer#contact"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -60,7 +67,7 @@ App::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'pages#index'
+  root :to => 'pages#show', :id => 1
 
   # See how all your routes lay out with "rake routes"
 

@@ -14,6 +14,8 @@ class PagesController < ApplicationController
   # GET /pages/1.json
   def show
     @page = Page.find(params[:id])
+    @tags = Tag.where(:page_id => params[:id])
+    @categories = Category.where(:page_id => params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

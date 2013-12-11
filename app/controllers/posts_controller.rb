@@ -3,6 +3,8 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @tags = Tag.where(:post_id => params[:id])
+    @categories = Category.where(:post_id => params[:id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +16,8 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+    @tags = Tag.where(:post_id => params[:id])
+    @categories = Category.where(:post_id => params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

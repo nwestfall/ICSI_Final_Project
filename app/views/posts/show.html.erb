@@ -1,35 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Id:</b>
-  <%= @post.id %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @post.name %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= @post.content %>
-</p>
-
-<p>
-  <b>Date created:</b>
-  <%= @post.date_created %>
-</p>
-
-<p>
-  <b>Date updated:</b>
-  <%= @post.date_updated %>
-</p>
-
-<p>
-  <b>Deleted at:</b>
-  <%= @post.deleted_at %>
-</p>
-
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div class="row">
+  <div class="large-12 columns">
+      <h2 class="subheader"><%= @post.name %></h2>
+      <div class="panel">
+        <p><%= @post.content.html_safe %></p>
+        <p>date created: <%= @post.date_created %> || date updated: <%= @post.date_updated %></p>
+        <p>tags: <% if @tags.count > 0 %><% @tags.each do |tag| %><span class="label round"><%= tag.name %></span><% end %><% else %>no tags<% end %></p>
+        <p>categories: <% if @categories.count > 0 %><% @categories.each do |cat| %><span class="label round"><%= cat.name %></span><% end %><% else %>no categories<% end %></p>
+        <%= link_to 'edit', edit_post_path(@post) %>  
+      </div>
+  </div>
+</div>

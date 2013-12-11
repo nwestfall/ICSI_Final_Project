@@ -1,35 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="large-12 columns">
+      <h2 class="subheader"><%= @page.heading %></h2>
+      <div class="panel">
+        <p><%= @page.content.html_safe %></p>
 
-<p>
-  <b>Id:</b>
-  <%= @page.id %>
-</p>
-
-<p>
-  <b>Heading:</b>
-  <%= @page.heading %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= @page.content %>
-</p>
-
-<p>
-  <b>Date created:</b>
-  <%= @page.date_created %>
-</p>
-
-<p>
-  <b>Date updated:</b>
-  <%= @page.date_updated %>
-</p>
-
-<p>
-  <b>Deleted at:</b>
-  <%= @page.deleted_at %>
-</p>
-
-
-<%= link_to 'Edit', edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>
+        <p>date created: <%= @page.date_created %> || date updated: <%= @page.date_updated %></p>
+        <p>tags: <% if @tags.count > 0 %><% @tags.each do |tag| %><span class="label round"><%= tag.name %></span><% end %><% else %>no tags<% end %></p>
+        <p>categories: <% if @categories.count > 0 %><% @categories.each do |cat| %><span class="label round"><%= cat.name %></span><% end %><% else %>no categories<% end %></p>
+        <% if @page.id == 5 %><%= link_to 'edit', edit_page_path(@page) %><% end %> 
+      </div>
+  </div>
+</div>
